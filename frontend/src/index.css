@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.containers{
+    background-image: url('../src/assets/img.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: cover;
+}
+
+.title{
+    position: relative;
+    left: 450px;
+    top: 60px;
+    height: 70px;
+    width: 450px;
+    background-color: rgb(113, 113, 163);
+    border-radius: 13px;
+    
+}
+.title p{
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding: 16px;
+    color: rgb(24, 18, 18);
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.title:hover{
+    position: relative;
+    left: 445px;
+    box-shadow: 7px 5px  rgb(153, 146, 146);
+}
+
+.container{
+    height: 430px;
+    margin-top: 65px;
+    background-color: rgb(214, 208, 208);
+    width: 450px;
+    position: relative;
+    left: 450px;
+    border-radius: 13px;
+
+}
+
+.act input{
+    border: 1px solid red;
+}
+
+.sign{
+    margin-top: 0.8rem;
+    border-radius: 9px;
+    margin-left: 2px;
+    height: 36px;
+    justify-content: center;
+    text-align: center;
+    color: rgb(37, 36, 36);
+    font-size: 15px;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.sign:hover{
+    background-color: rgb(65, 65, 150);
+    color: white;
+}
+.contain{
+    height: 470px;
+    margin-top: 65px;
+    background-color: rgb(214, 208, 208);
+    width: 450px;
+    position: relative;
+    left: 450px;
+    border-radius: 13px;
+
+}

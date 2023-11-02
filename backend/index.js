@@ -5,7 +5,7 @@ const chats = require('./data/data')
 const app = express()
 dotenv.config()
 
-const PORT = process.env.PoRT || 5000
+const PORT = process.env.PORT || 8000
 
 app.get('/',(req,res)=>{
     res.send('API is running')
@@ -16,7 +16,7 @@ app.get('/chats',(req,res)=>{
     res.send(chats)
 })
 
-app.get('/chats/:chatName',(req,res) =>{
+app.get('/api/chats/:chatName',(req,res) =>{
     const singleChat = chats.find((m) => m.chatName=== req.params.chatName);
     if (singleChat) {
         res.send(singleChat);
@@ -26,5 +26,5 @@ app.get('/chats/:chatName',(req,res) =>{
 
 })
 
-const server = app.listen(5000,()=>console.log(`🗨️ servers on port ${PORT}`))
+const server = app.listen(8000,()=>console.log(`🗨️ servers on port ${PORT}`))
 
