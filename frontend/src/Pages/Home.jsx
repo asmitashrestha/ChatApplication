@@ -2,41 +2,53 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { AiFillEye } from 'react-icons/ai';
 
 const Home = () => {
-  const [error, setError] = useState("");
+  const [error, setError] = useState("")
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [display, setDisplay] = useState(false);
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate();
 
   const handleClick = () => setDisplay(!display);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
 
-    fetch('https://fakestoreapi.com/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        username: email,
-        password: password,
-      })
-    })
-      .then(res => {
-        if (res.ok) {
-          toast.success("Login successful");
-          navigate('/');
-        } else {
-          toast.error("Invalid Credentials");
-        }
-      })
-      .catch(err => {
-        console.error("Error occurred during login");
-        toast.error("Something went wrong - mostly when there is an interruption in the internet");
+  const submitHandler = async (e) =>{
+    e.preventDefault()
+    setLoading(true)
+    if(!email || !password ){
+      toast.warning("Please Fill all the fileds!")
+      setLoading(false)
+      return
+    }
+
+    try {
+      const response = await fetch("http://localhost:8000/user/login", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
       });
+    
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
+    
+      const data = await response.json();
+      toast.success("Login Successful");
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      setLoading(false);
+      navigate("/chats");
+    } catch (error) {
+      toast.error(error.response.data.message);
+      setLoading(false);
+    }
+    
   }
+
 
   const handleGuestUserClick = () => {
     setEmail("guest123@gmail.com");
@@ -63,7 +75,7 @@ const Home = () => {
           }
 
           <div className="mt-4 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form className="space-y-6" onSubmit={handleSubmit}>
+            <form className="space-y-6">
               <div>
                 <label htmlFor="email" className="block text-md font-medium leading-6 text-gray-700 font-serif hover:text-gray-900">Email Address</label>
                 <div className="mt-2">
@@ -108,7 +120,9 @@ const Home = () => {
               </div>
 
               <div>
-                <button className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                <button className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                onClick={submitHandler}
+                disabled={loading}>
                   Login
                 </button>
               </div>
@@ -125,4 +139,6 @@ const Home = () => {
 }
 
 export default Home;
+
+
 

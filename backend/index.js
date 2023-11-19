@@ -1,5 +1,6 @@
 const express = require('express')
 const dotenv = require('dotenv')
+const cors = require('cors')
 const chats = require('./data/data')
 const User = require('./Models/User')
 const userRoutes = require('./routes/userRoutes')
@@ -9,6 +10,7 @@ const app = express()
 dotenv.config()
 
 require('./config/database')
+app.use(cors())
 
 app.use(express.json()) //global middleware
 const PORT = process.env.PORT || 8000

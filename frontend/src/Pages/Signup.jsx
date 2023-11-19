@@ -8,7 +8,7 @@ const Home = () => {
   const [name,setName] = useState()
   const [email,setEmail] = useState()
   const [password,setPassword] = useState()
-  const [confirmpassword,seConfirmpassword] = useState()
+  const [confirmpassword,setConfirmpassword] = useState()
   const [img,setImg] = useState()
   const [error, setError] = useState("")
   const [display,setDisplay] = useState(false)
@@ -62,29 +62,30 @@ const Home = () => {
       return
     }
 
-    try{
-      const { data } = await fetch("http://localhost:8000/user", {
+    try {
+      const response = await fetch("http://localhost:8000/user", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
         },
         body: JSON.stringify({ name, email, password, img }),
-      })
-        .then((res) => res.json())
-        .catch((error) => {
-          console.error("Error during registration:", error);
-          throw error; // rethrow the error to be caught by the error handling below
-        });
-      
-      toast.success("Registration Successful")
-      localStorage.setItem("userInfo", JSON.stringify(data))
-      setLoading(false)
-      navigate("/chats")
+      });
+    
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
+    
+      const data = await response.json();
+      toast.success("Registration Successful");
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      setLoading(false);
+      navigate("/chats");
+    } catch (error) {
+      toast.error(error.message);
+      setLoading(false);
     }
-    catch(error){
-      toast.error(error.res.data.message)
-      setLoading(false)
-    }
+    
   }
 
 
@@ -109,7 +110,7 @@ const Home = () => {
 
 
           <div className="mt-1 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form className="space-y-6" >
+            <form className="space-y-6" onSubmit={submitHandler}>
               <div>
                 <label htmlFor="name" className="block text-md font-medium leading-6 text-gray-700 font-serif hover:text-gray-900">Name</label>
                 <div className="mt-1">
@@ -150,8 +151,8 @@ const Home = () => {
                   
                 </div>
                 <div className="mt-1 flex">
-                  <input id="password" name="password" type={display? 'text': "password"} autoComplete="current-password" required className="pl-2 block w-10/12 p24 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-400 sm:text-sm sm:leading-6" 
-                  onChange={(e)=>{setPassword(e.target.value)}}/>
+                  <input id="confirmPassword" name="password" type={display? 'text': "password"} autoComplete="current-password" required className="pl-2 block w-10/12 p24 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-400 sm:text-sm sm:leading-6" 
+                  onChange={(e)=>{setConfirmpassword(e.target.value)}}/>
                  
                   <button className="block hover:bg-teal-100 w-2/12 text-center justify-center bg-white p24 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-400 sm:text-sm sm:leading-6 justify-center text-center"
                   onClick={handleClick}>
