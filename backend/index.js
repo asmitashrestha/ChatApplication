@@ -5,6 +5,7 @@ const chats = require('./data/data')
 const User = require('./Models/User')
 const userRoutes = require('./routes/userRoutes')
 const { pageNotFound, errorHandlers } = require('./middleware/errorHandler')
+const chatRoutes = require('./routes/chatRoutes')
 
 const app = express()
 dotenv.config()
@@ -29,6 +30,7 @@ app.get('/',(req,res)=>{
 })
 
 app.use('/user',userRoutes)
+app.use('/chat',chatRoutes)
 
 app.use(pageNotFound)
 app.use(errorHandlers)
