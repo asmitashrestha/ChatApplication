@@ -1,44 +1,25 @@
-import  { useEffect, useState } from 'react'
-import axios from 'axios'
+import { useState } from "react";
+import { ChatState } from "../Context/ChatProvider";
+import Sidebar from "../components/Sidebar";
+import Mychats from "../components/Mychats";
+import Chatcontainer from "../components/Chatcontainer";
 
 const Chats = () => {
-  const[chat,setChat] = useState([])
-  
-   
+  const { user } = ChatState(); // Call ChatState as a function
 
-const fetchData = async () => {
-  try {
-    const response = await fetch('/chats', {
-      method: 'GET', // This is the default, so you can omit it
-    });
-
-    console.log('Response Status:', response.status);
-    console.log('Response Text:', await response.text());
-
-    if (!response.ok) {
-      throw new Error('API not found');
-    }
-
-    const data = await response.json();
-    setChat(data)
-  } catch (error) {
-    console.log(error.message);
-  }
-}
-
-useEffect(() => {
-  fetchData();
-}, []);
-
+  const [fetchAgain, setFetchAgain] = useState(false);
 
   return (
     <div>
-      
-      {chat.map((chts)=>(
-        <div> {chts.chatName}</div>
-      ))}
+      {user && <Sidebar />}
+      <div className="box-container">
+        {user && <Mychats fetchAgain={fetchAgain} />}
+        {user && (
+          <Chatcontainer fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
+        )}
+      </div>
     </div>
-  )
+  );
 }
 
-export default Chats
+export default Chats;

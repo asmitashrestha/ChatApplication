@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {AiFillEye} from 'react-icons/ai';
 
-const Home = () => {
+const Signup = () => {
   const [name,setName] = useState()
   const [email,setEmail] = useState()
   const [password,setPassword] = useState()
@@ -189,4 +189,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Signup
