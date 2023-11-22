@@ -101,6 +101,9 @@ input::placeholder {
 
   .img-user{
     border-radius: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 5px;
   }
 .search-box{
     border-radius: 5px;
@@ -119,7 +122,7 @@ input::placeholder {
   }
 
   .tit-chat{
-    margin-top: -26px;
+    margin-top: -31px;
     position: relative;
     left: 1140px;
   }
@@ -127,4 +130,48 @@ input::placeholder {
   .line{
     margin-top: 9px;
     border: 3px solid rgb(75, 75, 114);
+  }
+  .tit-right{
+    width: 40px;
+    height: 40px;
+    background-color: #b8aeae;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  .logout{
+    font-size: 14px;
+    color: #474646;
+    background-color: #b8aeae;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: 500;
+  }
+  .profile-container{
+    position: relative;
+    left: 500px;
+    top: 190px;
+    width: 400px;
+    height: 290px;
+    background-color: #ada3a3;
+    border-radius: 20px;
+  }
+  .pro-contain{
+    justify-content: center;
+    text-align: center;
+  }
+
+  .pro-contain h2{
+    padding-top: 40px;
+    color: rgb(54, 53, 50);
+  }
+  .pro-contain img{
+    border-radius: 100%;
+    margin-left: 140px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .pro-contain p{
+    color: rgb(54, 53, 50);
+    margin-left: 9px;
   }
