@@ -1,9 +1,19 @@
-import React from 'react'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const Chatloading = () => {
   return (
     <div>
-      <h1>Chatloading</h1>
+       <>
+              <Skeleton height={85} />
+              <Skeleton height={85} />
+              <Skeleton height={85} />
+              <Skeleton height={85} />
+              <Skeleton height={85} />
+              <Skeleton height={85} />
+              <Skeleton height={85} />
+              <Skeleton height={85} />
+            </>
     </div>
   )
 }

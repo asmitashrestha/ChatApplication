@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Tooltip } from "@chakra-ui/tooltip";
+import { FaSearch } from "react-icons/fa";
 import axios from "axios";
 import {
   Drawer,
@@ -23,16 +24,16 @@ import { Box, Text } from "@chakra-ui/layout";
 import { IoMdNotifications } from "react-icons/io";
 import { ChatState } from "../Context/ChatProvider";
 import { useDisclosure } from "@chakra-ui/hooks";
-import { FaAngleDown } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import Chatloading from './Chatloading';
+import Userlist from './Userlist';
 
 const Sidebar = () => {
   const [search, setSearch] = useState("")
   const [searchResult, setSearchResult] = useState([])
   const [loading, setLoading] = useState(false)
   const [loadingChat, setLoadingChat] = useState()
-  const { user } = ChatState()
+  const { user ,chats, setChats,setSelectedChat} = ChatState()
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const navigate = useNavigate()
@@ -60,12 +61,41 @@ const Sidebar = () => {
         },
       };
 
-      const { data } = await axios.get(`/user?search=${search}`, config);
+      const { data } = await axios.get(`http://localhost:8000/user?search=${search}`, config);
 
       setLoading(false);
       setSearchResult(data);
     } catch (error) {
       toast.error("Failed to Load the Results") 
+    }
+  };
+
+  const accessChat = async (userId) => {
+    console.log(userId);
+
+    try {
+      setLoadingChat(true);
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      };
+      const { data } = await axios.post(`http://localhost:8000/chat`, { userId }, config);
+
+      if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
+      setSelectedChat(data);
+      setLoadingChat(false);
+      onClose();
+    } catch (error) {
+      toast({
+        title: "Error fetching the chat",
+        description: error.message,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom-left",
+      });
     }
   };
 
@@ -114,22 +144,22 @@ const Sidebar = () => {
     <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerHeader borderBottomWidth="1px">Search Users</DrawerHeader>
+          <DrawerHeader borderBottomWidth="1px">Search Friend</DrawerHeader>
           <DrawerBody>
             <Box d="flex" pb={2}>
               <Input
                 placeholder="Search by name or email"
-                mr={2}
+                mr={1}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
-              <Button onClick={handleSearch}>Go</Button>
+              <Button onClick={handleSearch}><FaSearch /></Button>
             </Box>
             {loading ? (
               <Chatloading />
             ) : (
               searchResult?.map((user) => (
-                <UserListItem
+                <Userlist
                   key={user._id}
                   user={user}
                   handleFunction={() => accessChat(user._id)}
