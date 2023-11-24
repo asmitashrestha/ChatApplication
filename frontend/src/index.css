@@ -210,3 +210,19 @@ input::placeholder {
     left: 90px;
     bottom: 24px;
   }
+
+
+  /* to remove scroll bar in chat page */
+
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(136, 136, 136, 0.281);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ChatState } from "../Context/ChatProvider";
 import Sidebar from "../components/Sidebar";
-import Mychats from "../components/Mychats";
+import Mychat from "../components/Mychat";
 import Chatcontainer from "../components/Chatcontainer";
 
 const Chats = () => {
@@ -13,7 +13,7 @@ const Chats = () => {
     <div>
       {user && <Sidebar />}
       <div className="box-container">
-        {user && <Mychats fetchAgain={fetchAgain} />}
+        {user && <Mychat fetchAgain={fetchAgain} />}
         {user && (
           <Chatcontainer fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
         )}
