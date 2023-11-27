@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { getUser } from "../components/ChatLogics";
 import ChatLoading from "../components/Chatloading";
 import { ChatState } from "../Context/ChatProvider";
+import Groupchat from "./Groupchat";
 
 const MyChats = ({ fetchAgain }) => {
   const [loggedUser, setLoggedUser] = useState();
@@ -43,12 +44,12 @@ const MyChats = ({ fetchAgain }) => {
        className="text-xl mt-2"
       >
         My Chats
-        <div>
+        <Groupchat>
           <button className="flex  relative start-32 bottom-14 mt-7 p-1  text-xl bold hover:text-white hover:bg-blue-400 rounded-lg mt-4"
           >
             New Group Chat<FaPlus className="ml-2 mt-1 mr-2"/>
           </button>
-        </div>
+        </Groupchat>
       </div>
       <div className="flex flex-col bg-white width-full height-full rounded-lg overflow-hidden">
         {chats ? (

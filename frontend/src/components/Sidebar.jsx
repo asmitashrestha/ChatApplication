@@ -89,14 +89,7 @@ const Sidebar = () => {
       setLoadingChat(false);
       onClose();
     } catch (error) {
-      toast({
-        title: "Error fetching the chat",
-        description: error.message,
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom-left",
-      });
+      toast.error('Error fetching the chat')
     }
   };
 
