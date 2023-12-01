@@ -55,9 +55,9 @@ const MyChats = ({ fetchAgain }) => {
         {chats ? (
           <div className="overflow-y-scroll">
             {chats.map((chat) => (
-              <div
+              <button
                 onClick={() => setSelectedChat(chat)}
-                className={`cursor-pointer mt-1 w-80 px-3 py-2 rounded-lg ${
+                className={`block cursor-pointer mt-1 w-80 px-3 py-2 rounded-lg ${
                   isSelected ? "bg-blue-400 text-white" : "bg-gray-200 text-black"
                 }`}
                 key={chat._id}
@@ -65,7 +65,7 @@ const MyChats = ({ fetchAgain }) => {
                 <p>
                   {!chat.isGroupChat
                     ? getUser(loggedUser, chat.users)
-                    : chat.chatName}
+                    : chat. messageName}
                 </p>
                 {chat.newMessage && (
                   <div className="text-xs">
@@ -75,7 +75,7 @@ const MyChats = ({ fetchAgain }) => {
                       : chat.newMessage.content}
                   </div>
                 )}
-              </div>
+              </button>
             ))}
           </div>
         ) : (

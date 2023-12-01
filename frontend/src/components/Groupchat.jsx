@@ -18,8 +18,6 @@ const Groupchat = ({ children }) => {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [loading, setLoading] = useState(false);
- 
-
   const { user, chats, setChats } = ChatState();
 
   const groupHandler = (addUser) => {
@@ -59,10 +57,10 @@ const Groupchat = ({ children }) => {
 
   const handleSubmit = async () => {
     if (!groupChatName || !selectedUsers) {
-      toast.warning("Please fill all the fields")
+      toast.warning("Please fill all the fields");
       return;
     }
-
+  
     try {
       const config = {
         headers: {
@@ -70,7 +68,7 @@ const Groupchat = ({ children }) => {
         },
       };
       const { data } = await axios.post(
-        `http://localhost:8000/chat/group`,
+        "http://localhost:8000/chat/group",
         {
           name: groupChatName,
           users: JSON.stringify(selectedUsers.map((u) => u._id)),
@@ -79,18 +77,20 @@ const Groupchat = ({ children }) => {
       );
       setChats([data, ...chats]);
       onClose();
-      toast.success("Group chat created Sucessfully!") 
+      toast.success("Group chat created successfully!");
     } catch (error) {
-      toast.error(error.response.data) 
+      toast.error(error.response.data);
     }
   };
+  
 
   return (
     <>
       <span onClick={onOpen}>{children}</span>
 
       <div className={`fixed top-0 left-0 w-full h-full ${isOpen ? 'block' : 'hidden'}`}>
-      <div className="fixed top-0 left-0 w-full h-full bg-black opacity-50"></div>
+      <div className="fixed top-0 left-0 w-full h-full bg-black opacity-50">
+      </div>
       <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded">
         <div className="text-3xl font-bold text-center mb-4">Create Group Chat</div>
         <div className="mb-4">
@@ -103,6 +103,7 @@ const Groupchat = ({ children }) => {
             onChange={(e) => setGroupChatName(e.target.value)}
           />
         </div>
+    
         <div className="mb-4">
           <label htmlFor="addUsers" className="block text-sm font-medium text-gray-700">Add Users in Group</label>
           <input
@@ -111,6 +112,7 @@ const Groupchat = ({ children }) => {
             className="mt-1 p-2 border rounded w-full"
             placeholder="Add Users in Group"
             onChange={(e) => searchUser(e.target.value)}
+           
           />
         </div>
         <div className="w-full flex flex-wrap mb-4">
