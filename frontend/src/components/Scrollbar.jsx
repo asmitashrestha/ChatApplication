@@ -22,18 +22,21 @@ const Scrollbar = ({ messages }) => {
                 style={{ marginRight: "1rem", marginTop: "7px" }}
               >
                 <img
-                  className="avatar"
+                  className="user-image"
                   src={m.sender.img}
                   alt={m.sender.name}
                 />
-                <span className="tooltiptext">{m.sender.name}</span>
+                {/* <span className="user-name">{m.sender.name}</span> */}
               </div>
             )}
             <span
               className="message"
               style={{
                 backgroundColor: `${
-                  m.sender._id === user._id ? "#9fd4f3" : "#96c5a8"
+                  m.sender._id === user._id ? "#1d40db" : "rgb(86, 93, 133)"
+                }`,
+                color: `${
+                  m.sender._id === user._id ? "#ececf0" : "#fbffff"
                 }`,
                 marginLeft: isSameSenderMargin(messages, m, i, user._id),
                 marginTop: isSameUser(messages, m, i, user._id) ? "3px" : "10px",

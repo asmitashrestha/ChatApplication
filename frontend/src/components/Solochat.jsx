@@ -5,12 +5,11 @@ import Groupchatupdate from "./Groupchatupdate";
 import Scrollbar from "./Scrollbar";
 import Lottie from "react-lottie";
 import animationData from "../components/anima/typing.json";
-
 import { ChatState } from "../Context/ChatProvider";
 import { getUser, getUserInfo } from "./ChatLogics";
 
 const ENDPOINT = "http://localhost:8000"; // "https://talk-a-tive.herokuapp.com"; -> After deployment
-var socket, selectedChatCompare;
+let socket, selectedChatCompare;
 
 const Solochat = ({ fetchAgain, setFetchAgain }) => {
   const [messages, setMessages] = useState([]);
@@ -102,17 +101,17 @@ const Solochat = ({ fetchAgain, setFetchAgain }) => {
   }, [selectedChat]);
 
   useEffect(() => {
-    socket.on("message recieved", (newMessageRecieved) => {
+    socket.on("message received", (newMessageReceived) => {
       if (
         !selectedChatCompare ||
-        selectedChatCompare._id !== newMessageRecieved.chat._id
+        selectedChatCompare._id !== newMessageReceived.chat._id
       ) {
-        if (!notification.includes(newMessageRecieved)) {
-          setNotification([newMessageRecieved, ...notification]);
+        if (!notification.includes(newMessageReceived)) {
+          setNotification([newMessageReceived, ...notification]);
           setFetchAgain(!fetchAgain);
         }
       } else {
-        setMessages([...messages, newMessageRecieved]);
+        setMessages([...messages, newMessageReceived]);
       }
     });
   });
@@ -127,10 +126,10 @@ const Solochat = ({ fetchAgain, setFetchAgain }) => {
       socket.emit("typing", selectedChat._id);
     }
     let lastTypingTime = new Date().getTime();
-    var timerLength = 3000;
+    let timerLength = 3000;
     setTimeout(() => {
-      var timeNow = new Date().getTime();
-      var timeDiff = timeNow - lastTypingTime;
+      let timeNow = new Date().getTime();
+      let timeDiff = timeNow - lastTypingTime;
       if (timeDiff >= timerLength && typing) {
         socket.emit("stop typing", selectedChat._id);
         setTyping(false);
@@ -158,7 +157,7 @@ const Solochat = ({ fetchAgain, setFetchAgain }) => {
               </>
             ) : (
               <>
-                {selectedChat.chatName.toUpperCase()}
+                {selectedChat.messageName.toUpperCase()}
                 <Groupchatupdate
                   fetchMessages={fetchMessages}
                   fetchAgain={fetchAgain}

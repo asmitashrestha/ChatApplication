@@ -39,8 +39,36 @@ app.use(errorHandlers)
 
 const server = app.listen(8000,()=>console.log(`🗨️  servers on port ${PORT}`))
 
+const io = require("socket.io")(server, {
+  pingTimeout: 50000,
+  cors: {
+    origin: "http://localhost:5173",
+  }
+})
 
+io.on("connection",(socket)=>{
+  console.log("Connected sucessfully to socket.io");
 
+  socket.on("setup", (userData)=>{
+    socket.join(userData._id)
+    console.log(userData._id)
+    socket.emit("connected!")
+  })
 
+  socket.on("join chat", (room)=>{
+    socket.join(room)
+    console.log("User joined room" + room);
+  })
 
+  socket.on("new message",(newMessageReceived)=>{
+    let chat = newMessageReceived.chat
+    if(!chat.users) return console.log("chat.users is not defined");
+
+    chat.users.forEach((user) =>{
+      if(user._id === newMessageReceived.sender._id) return
+
+      socket.in(user._id).emit("message received", newMessageReceived)
+    })
+  })
+})
 
