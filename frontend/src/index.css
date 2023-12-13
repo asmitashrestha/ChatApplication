@@ -9,9 +9,28 @@
     object-fit: cover;
 }
 
-.title{
+.titler{
     position: relative;
-    left: 450px;
+    left: 500px;
+    top: 10px;
+    height: 70px;
+    width: 361px;
+    background-color: rgb(113, 113, 163);
+    border-radius: 13px;
+    
+}
+.titler p{
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding: 16px;
+    color: rgb(24, 18, 18);
+    font-weight: 700;
+    font-size: 25px;
+}
+.titles{
+    position: relative;
+    left: 445px;
     top: 10px;
     height: 70px;
     width: 450px;
@@ -19,7 +38,7 @@
     border-radius: 13px;
     
 }
-.title p{
+.titles p{
     justify-content: center;
     text-align: center;
     align-items: center;
@@ -29,10 +48,14 @@
     font-size: 25px;
 }
 
-.title:hover{
+.titles:hover{
     position: relative;
     left: 445px;
     box-shadow: 7px 5px  rgb(153, 146, 146);
+}
+
+.titler:hover{
+  box-shadow:7px 5px  rgb(153, 146, 146) ;
 }
 
 .container{
@@ -41,7 +64,7 @@
     background-color: rgb(214, 208, 208);
     width: 450px;
     position: relative;
-    left: 450px;
+    left: 500px;
     border-radius: 13px;
 
 }
@@ -96,7 +119,7 @@ input::placeholder {
     font-size: 14px;
     padding: 5px;
     font-weight: 400;
-    color: #4d3d3d; /* Set your desired placeholder text color */
+    color: #4d3d3d; 
   }
 
   .img-user{
@@ -211,6 +234,14 @@ input::placeholder {
     bottom: 24px;
   }
 
+  .messenger-btn{
+position: relative;
+left: 390px;
+  }
+
+  .messenger-btn:hover{
+    background-color: rgb(93, 93, 240);
+  }
 
   /* to remove scroll bar in chat page */
 
@@ -234,3 +265,307 @@ input::placeholder {
     height: 35px;
     margin-left: 0px;
   }
+
+/*   
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+} */
+
+
+/* css for navbar components*/
+.navs {
+  position: relative;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: space-between;
+  margin-left: 0.9rem;
+  text-align: center;
+  padding: 0;
+
+}
+
+.navbar {
+  color: rgb(38, 38, 224);
+  position: relative;
+}
+
+.navbar button {
+  padding: 17px;
+  border: none;
+  margin-right: 1rem;
+  border-radius: 0.5rem;
+}
+
+.posts {
+  position: absolute;
+  color: rgb(38, 55, 209);
+  background-color: white;
+  top: 6px;
+  right: 150px;
+  border-radius: 0.4rem;
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.post {
+  position: absolute;
+  right: 30px;
+  top: 6px;
+  background-color: rgb(14, 14, 236);
+  width: 100px;
+  color: white;
+  border-radius: 0.4rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 10px 0.5px;
+  text-decoration: none;
+}
+
+.posts:hover {
+  color: white;
+  background-color: rgb(29, 6, 56);
+}
+
+
+/* CSS for home page */
+
+/* .thumbs-wrapper{
+  display: none;
+} */
+
+.para{
+  position: absolute;
+  top: 200px;
+  left: 100px;
+  font-size: 29px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+}
+.search{
+  position: absolute;
+  top: 250px;
+  left: 820px;
+}
+.search input{
+  font-size: 15px;
+  padding:12px 10px;
+  width: 300px;
+  border-radius: 5px;
+  outline: none;
+  box-shadow: 3px 3px rgb(192, 190, 190);
+  margin-right: 8px;
+  color: rgb(82, 65, 240);
+}
+
+.search button{
+  font-size: 30px;
+  justify-content: center;
+  position:absolute;
+  top: 1px;
+  border-radius: 3px;
+  padding: 5px;
+
+}
+.search button:hover{
+  background-color: blue;
+}
+
+/* css for package page or product page */
+
+.container{
+  width: 360px;
+}
+
+/* css for about experience */
+
+.aboutexp{
+  margin-left: 3rem;
+}
+.imges{
+  margin-top: 50px;
+  border-radius: 100%;
+}
+.imgs{
+  position: relative;
+  bottom: 40px;
+  left: 170px;
+  border-radius: 5px;
+  border: 3px solid rgb(226, 223, 218) ;
+}
+.rara{
+  position: relative;
+  top: 230px;
+  right: 45px;
+  background-color: rgb(84, 141, 190);
+  width:90px;
+  justify-content: center;
+  text-align: center;
+  border: 2px solid whitesmoke;
+  border-radius: 45px;
+  color: white;
+  padding:5px 15px;
+}
+
+.minexp{
+  display: flex;
+  justify-content: space-between;
+}
+
+.exp h2{
+  background-color: rgb(98, 115, 146);
+  width: 5rem;
+  justify-content: center;
+  text-align: center;
+  padding:15px ;
+  border-radius: 9px;
+  font-size: 24px;
+}
+
+.exp p{
+  font-size: 16px;
+}
+.exp h2:hover{
+  background-color: aliceblue;
+  color: rgb(26, 23, 23);
+}
+
+.gallery{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  margin-left: 30px;
+  padding: 5px;
+  margin-top: 50px;
+}
+.img-collection img{
+  border-radius: 10px;
+  border: 3px solid rgb(235, 232, 226);
+  height: 240px;
+  width: 300px;
+  
+}
+.img-collection img:hover{
+  box-shadow: 5px 7px 9px 9px rgb(187, 184, 184);
+}
+
+
+
+/* footer -css */
+.footer{
+  display: flex;
+  justify-content: space-between;
+  margin-right:200px;
+  background-color: rgb(178, 184, 184);
+  width: 1350px;
+}
+
+.foots{
+  display: flex;
+  justify-content: space-between;
+}
+
+.naves,.links{
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  color: rgb(27, 26, 26);
+}
+
+.icons p{
+  border-radius: 100%;
+  background-color: rgb(14, 7, 83);
+  padding: 12px 15px;
+  color: white;
+}
+
+.footer-right p{
+ display: flex;
+ text-align: justify;
+}
+
+.foot-div{
+  background-color: #0a0a0a;
+  height: 50px;
+  
+}
+.foot-para{
+  margin-top: 1px;
+  padding: 13px;
+  color: whitesmoke;
+}
+
+
+@media  screen and (max-width:576px) {
+  .para{
+    position: absolute;
+    top: 170px;
+    left: 100px;
+    font-size: 29px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+  }
+  .search{
+    position: absolute;
+    top: 350px;
+    left: 90px;
+  }
+  .contains{
+    position: relative;
+    left: 45px;
+    padding: 20px;
+  }
+
+  .aboutexp{
+    margin-left: 67px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .exps{
+    position: relative;
+    right:360px;
+  }
+  .rara{
+    position: relative;
+    top: 130px;
+    font-size: 11px;
+
+  }
+  .imges{
+    margin-top: 10px;
+    border-radius: 100%;
+    height: 130px;
+   
+  }
+  .imgs{
+    position: relative;
+    bottom: 20px;
+    left: 55px;
+    border-radius: 5px;
+    height: 40px;
+    border: 3px solid rgb(226, 223, 218) ;
+  }
+  .gallery{
+    display: grid;
+    margin-left: 60px;
+    grid-template-columns: repeat(1,1fr);
+  }
+  .img-collection{
+    justify-content: center;
+    align-items: center; 
+  }
+  .img-collection img{
+    width: 360px;
+  }
+  
+}
+
+/* @media screen and (max-width:1026px){
+  .containe
+} */

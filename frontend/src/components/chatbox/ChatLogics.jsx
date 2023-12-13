@@ -6,6 +6,7 @@ export const getUser = (loggedUser, users) => {
 
 
 export const getUserInfo = (loggedUser, users) => {
+  console.log("Profile clicked");
   return  users[0]._id === loggedUser._id ? users[1]: users[0].name;
   
 }

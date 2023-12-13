@@ -4,9 +4,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { getUser } from "../components/ChatLogics";
-import ChatLoading from "../components/Chatloading";
-import { ChatState } from "../Context/ChatProvider";
+import { getUser } from "../chatbox/ChatLogics";
+import ChatLoading from "../chatbox/Chatloading";
+import { ChatState } from "../../Context/ChatProvider";
 import Groupchat from "./Groupchat";
 
 const MyChats = ({ fetchAgain }) => {

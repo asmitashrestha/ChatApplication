@@ -3,10 +3,12 @@ import axios from "axios";
 import io from "socket.io-client";
 import Groupchatupdate from "./Groupchatupdate";
 import Scrollbar from "./Scrollbar";
-import Lottie from "react-lottie";
-import animationData from "../components/anima/typing.json";
-import { ChatState } from "../Context/ChatProvider";
+//import Lottie from "react-lottie";
+import animationData from "../anima/typing.json";
+import { ChatState } from "../../Context/ChatProvider";
 import { getUser, getUserInfo } from "./ChatLogics";
+import { FaChevronCircleLeft } from "react-icons/fa";
+import { CgProfile } from "react-icons/cg";
 
 const ENDPOINT = "http://localhost:8000"; // "https://talk-a-tive.herokuapp.com"; -> After deployment
 let socket, selectedChatCompare;
@@ -19,8 +21,8 @@ const Solochat = ({ fetchAgain, setFetchAgain }) => {
   const [typing, setTyping] = useState(false);
   const [istyping, setIsTyping] = useState(false);
 
-  const { selectedChat, setSelectedChat, user, notification, setNotification } =
-    ChatState();
+  const { selectedChat, setSelectedChat, user, notification, setNotification } = ChatState();
+   
 
   const defaultOptions = {
     loop: true,
@@ -146,13 +148,13 @@ const Solochat = ({ fetchAgain, setFetchAgain }) => {
               className="md:hidden"
               onClick={() => setSelectedChat("")}
             >
-              &lt; Back
+              <FaChevronCircleLeft /> 
             </button>
             {messages && !selectedChat.isGroupChat ? (
               <>
                 {getUser(user, selectedChat.users)}
-                <button onClick={() => getUserInfo(user, selectedChat.users)}>
-                  Profile
+                <button onClick={() =>{console.log("Button clicked"); getUserInfo(user, selectedChat.users)}}>
+                <CgProfile />
                 </button>
               </>
             ) : (
@@ -180,7 +182,7 @@ const Solochat = ({ fetchAgain, setFetchAgain }) => {
             <div className="mt-3">
               {istyping ? (
                 <div>
-                  <Lottie
+                  <div
                     options={defaultOptions}
                     width={70}
                     style={{ marginBottom: 15, marginLeft: 0 }}

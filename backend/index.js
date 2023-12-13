@@ -2,20 +2,37 @@ const express = require('express')
 const dotenv = require('dotenv')
 const cors = require('cors')
 const chats = require('./data/data')
-const User = require('./Models/User')
+const User = require('./Models/User') //chat wal mero
 const userRoutes = require('./routes/userRoutes')
 const { pageNotFound, errorHandlers } = require('./middleware/errorHandler')
 const chatRoutes = require('./routes/chatRoutes')
 const messageRoutes = require('./routes/messageRoutes')
+const morgan = require('morgan')
+
 
 const app = express()
+require('express-async-errors')
 dotenv.config()
 
 require('./config/database')
 app.use(cors())
 
+const userRouter = require('./routes/user')
+const { handleNotFound } = require('./utils/helper')
+
 app.use(express.json()) //global middleware
 const PORT = process.env.PORT || 8000
+
+
+app.use(morgan("dev"))
+app.use('/users', userRouter)
+
+app.use((err, req, res, next) => {
+  console.log("err: ", err)
+  res.status(500).json({ error: err.message || err })
+})
+
+//app.use( handleNotFound)
 
 app.get('/products',async(req,res)=>{
   let products =await User.find({}).limit(10)

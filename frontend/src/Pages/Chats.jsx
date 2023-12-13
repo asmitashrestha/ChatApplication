@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { ChatState } from "../Context/ChatProvider";
-import Sidebar from "../components/Sidebar";
-import Mychat from "../components/Mychat";
-import Chatcontainer from "../components/Chatcontainer";
+import Sidebar from "../components/chatbox/Sidebar";
+import Mychat from "../components/chatbox/Mychat";
+import Chatcontainer from "../components/chatbox/Chatcontainer";
 
 const Chats = () => {
   const { user } = ChatState(); // Call ChatState as a function

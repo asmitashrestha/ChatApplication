@@ -6,7 +6,7 @@ import { useState } from "react";
 import {
   useDisclosure,
 } from "@chakra-ui/react";
-import { ChatState } from "../Context/ChatProvider";
+import { ChatState } from "../../Context/ChatProvider";
 
 import Userlist from './Userlist';
 import UserItem from './UserItem';

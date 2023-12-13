@@ -24,16 +24,23 @@ const Login = () => {
       }
   
       try {
-        const response = await fetch("http://localhost:8000/user/login", {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({ email, password }),
-        });
-      
+        // const response = await fetch("http://localhost:8000/user/login", {
+        //   method: "POST",
+        //   headers: {
+        //     "Content-type": "application/json",
+        //   },
+        //   body: JSON.stringify({ email, password }),
+        // });
+      const response = await fetch("http://localhost:8000/user/login", {
+  method: "POST",
+  headers: {
+    "Content-type": "application/json",
+  },
+  body: JSON.stringify({ email, password }),
+});
         if (!response.ok) {
           const errorData = await response.json();
+          console.log("Error data from server:", errorData);
           throw new Error(errorData.message);
         }
       
@@ -42,11 +49,24 @@ const Login = () => {
         localStorage.setItem("userInfo", JSON.stringify(data));
         setLoading(false);
         navigate("/chats");
-      } catch (error) {
-        toast.error(error.response.data.message);
-        setLoading(false);
+       } 
+      // } catch (error) {
+      //   toast.error(error.response.data.message);
+      //   console.log(error.response.data.message);
+      //   setLoading(false);
+      // }
+   catch (error) {
+      if (error.message) {
+        // Display the error message if available
+        toast.error(error.message);
+        console.log(error.message);
+      } else {
+        // If no specific error message is available, log the entire error object
+        toast.error('An error occurred');
+        console.error(error);
       }
-      
+      setLoading(false);
+    }
     }
   
   
@@ -58,7 +78,7 @@ const Login = () => {
     return (
       <>
         <div className='containers h-screen'>
-          <div className="title">
+          <div className="titler">
             <p>Chit-Chat</p>
           </div>
           <div className="container flex flex-col justify-center px-6 py-12 lg:px-8">
@@ -129,7 +149,7 @@ const Login = () => {
               </form>
             </div>
   
-            <Link to='/signup' className='sign bg-blue-500 py-2'>Signup</Link>
+            <Link to='/signupchat' className='sign bg-blue-500 py-2'>Signup</Link>
   
             <button className='sign bg-red-600 py-2' onClick={handleGuestUserClick}>Guest User Credentials</button>
           </div>

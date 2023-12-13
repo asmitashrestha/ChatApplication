@@ -92,7 +92,7 @@ const Signup = () => {
   return (
     <>
       <div className='containers h-screen'>
-        <div className="title">
+        <div className="titles">
           <p>Chit-Chat</p>
           </div>
         <div className="contain h-5/6 flex  flex-col justify-center px-6 py-12 lg:px-8">
@@ -174,7 +174,9 @@ const Signup = () => {
               <div className='flex relative bottom-5'>
                 <button type="submit" className="flex w-6/12 mr-2 justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 onClick={submitHandler} disabled ={loading}>Signup</button>
-                <Link to='/' className='w-6/12 justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"'>Login</Link>
+                <Link to='/loginchat' className='w-6/12 justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold
+                 leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline
+                  focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"'>Login</Link>
                </div>
             </form>
 

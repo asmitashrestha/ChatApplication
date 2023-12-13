@@ -1,4 +1,4 @@
-import { ChatState } from "../Context/ChatProvider";
+import { ChatState } from "../../Context/ChatProvider";
 import Solochat from "./Solochat";
 
 const Chatcontainer = ({ fetchAgain, setFetchAgain }) => {

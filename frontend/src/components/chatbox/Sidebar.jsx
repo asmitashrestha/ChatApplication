@@ -23,7 +23,7 @@ import { Spinner} from "@chakra-ui/spinner";
 import { Button } from "@chakra-ui/button";
 import { Box, Text } from "@chakra-ui/layout";
 import { IoMdNotifications } from "react-icons/io";
-import { ChatState } from "../Context/ChatProvider";
+import { ChatState } from "../../Context/ChatProvider";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { useNavigate } from 'react-router-dom';
 import Chatloading from './Chatloading';
@@ -95,15 +95,6 @@ const Sidebar = () => {
 
   return (
     <div className='boxcontainer '>
-      {/* <div className="search-bar ml-11 mt-5">
-      <button className='flex'>
-        <input className='inp-des  outline-none ' type="text" placeholder="Search chats" />
-        <div className="search-box">
-          <FaSearch className='search'/>
-        </div>
-        
-      </button>
-    </div> */}
 
 <Tooltip label="Search Users to chat" hasArrow placement="bottom-end">
           <Button variant="ghost" onClick={onOpen}>

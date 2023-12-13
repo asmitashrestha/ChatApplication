@@ -70,3 +70,4 @@ const findUsers = asyncHandler(async(req,res)=>{
 })
 
 module.exports = { registerUser, authUser ,findUsers};
+
