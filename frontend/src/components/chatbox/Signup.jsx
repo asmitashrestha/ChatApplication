@@ -137,7 +137,7 @@ const Signup = () => {
                   <input id="password" name="password" type={display? 'text': "password"} autoComplete="current-password" required className="pl-2 block w-10/12 p24 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-400 sm:text-sm sm:leading-6" 
                   onChange={(e)=>{setPassword(e.target.value)}}/>
                  
-                  <button className="block hover:bg-teal-100 w-2/12 text-center justify-center bg-white p24 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-400 sm:text-sm sm:leading-6 justify-center text-center"
+                  <button className="block hover:bg-teal-100 w-2/12 text-center justify-center bg-white p24 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-400 sm:text-sm sm:leading-6  "
                   onClick={handleClick}>
                     <span className='eye'> { display ? "hide" :"display"} </span>
                     
@@ -154,7 +154,7 @@ const Signup = () => {
                   <input id="confirmPassword" name="password" type={display? 'text': "password"} autoComplete="current-password" required className="pl-2 block w-10/12 p24 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-400 sm:text-sm sm:leading-6" 
                   onChange={(e)=>{setConfirmpassword(e.target.value)}}/>
                  
-                  <button className="block hover:bg-teal-100 w-2/12 text-center justify-center bg-white p24 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-400 sm:text-sm sm:leading-6 justify-center text-center"
+                  <button className="block hover:bg-teal-100 w-2/12  bg-white p24 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-400 sm:text-sm sm:leading-6 justify-center text-center"
                   onClick={handleClick}>
                     <span className='eye'> { display ? "hide" :"display"} </span>
                     

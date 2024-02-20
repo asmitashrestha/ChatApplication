@@ -48,7 +48,8 @@ const Footer = () => {
                 </div>
             </div>
             <div className="foot-div">
-                 <p className='foot-para justify-center text-center mt-4 mb-4 text-zinc-900 font-semibold'>Copyright 2023 design and developed by Asmita Shrestha</p>
+                 <p className='foot-para justify-center text-center mt-4 mb-4 text-zinc-900 font-semibold'>Copyright 2023 design and
+                 developed by Asmita Shrestha & Aman Singh</p>
      
             </div>
               </>

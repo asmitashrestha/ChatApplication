@@ -1,8 +1,14 @@
 
-export const getUser = (loggedUser, users) => {
-  return  users[0]._id === loggedUser._id ? users[1].name : users[0].name;
+// export const getUser = (loggedUser, users) => {
+//   return  users[0]._id === loggedUser._id ? users[1].name : users[0].name;
   
-}
+// }
+
+// ChatLogics.jsx
+export const getUser = (loggedUser, users) => {
+  const sender = users.find((user) => user._id !== loggedUser._id);
+  return sender?.name || "Unknown User";
+};
 
 
 export const getUserInfo = (loggedUser, users) => {
